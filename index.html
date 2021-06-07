@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Boda Pamela Y Fernando</title>
+        <link rel="stylesheet" href="./src/styles/main.css" />
+    </head>
+    <body>
+        <header class="header">
+            <img class="header__logo" src="./src/static/img/logo.png" alt="PF" />
+            <img class="header__menu" src="./src/static/img/hamburger.png" alt="PF" />
+        </header>
+        <main>
+            <article class="hero">
+                <div class="hero__names">
+                    Pamela & Fernando
+                    <span>18 Septiembre 2021</span>
+                </div>
+                <div class="countdown">
+                    <div class="countdown__digit">
+                        <span>20</span>
+                        <div class="countdown__text">Dias</div>
+                    </div>
+                    <span>:</span>
+                    <div class="countdown__digit">
+                        <span>17</span>
+                        <div class="countdown__text">Horas</div>
+                    </div>
+                    <span>:</span>
+                    <div class="countdown__digit">
+                        <span>30</span>
+                        <div class="countdown__text">Minutos</div>
+                    </div>
+                    <span>:</span>
+                    <div id="cdSeg" class="countdown__digit">
+                        <span>00</span>
+                        <div class="countdown__text">Segundos</div>
+                    </div>
+                </div>
+            </article>
+            <article class="article">
+                <h2 class="article__title">¡Nos Casamos!</h2>
+                <img src="./src/static/img/spouses/1.png" alt="Novios corazón" />
+                <button class="play"></button>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta et sequi nihil distinctio
+                    consequatur nesciunt neque vel eos ut eius ipsum amet similique consequuntur labore, voluptatibus
+                    repellendus officiis dicta ea tempore, fugit suscipit vitae praesentium. Ducimus quia sapiente dolor
+                    et praesentium, facere provident, voluptates, tenetur quis hic ad nostrum animi!
+                </p>
+                <button>Ver detalles del evento</button>
+            </article>
+        </main>
+        <aside class="aside">
+            <div class="aside__content">
+                <div class="aside__header">
+                    <img src="./src/static/img/logo_green.png" alt="logos" />
+                    <img class="aside__close" src="./src/static/img/close.png" alt="close" />
+                </div>
+                <nav>
+                    <ul>
+                        <li>Lugar</li>
+                        <li>Código de vestimenta</li>
+                        <li>Itinerario</li>
+                        <li>Mesa de regalos</li>
+                        <li>Confirmar asistencia</li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <script>
+            const seg = document.getElementById('cdSeg').firstElementChild;
+
+            setInterval(() => {
+                const actualSeg = parseInt(seg.innerText || 0);
+
+                seg.innerText = `${(actualSeg + 1) % 60}`.padStart(2, '0');
+            }, 1000);
+        </script>
+    </body>
+</html>

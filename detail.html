@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boda Pamela Y Fernando</title>
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <header class="header">
+      <img class="header__logo" src="./src/static/img/logo.png" alt="PF" />
+      <img class="header__menu" src="./src/static/img/hamburger.png" alt="PF" />
+    </header>
+    <main>
+      <article class="detail votos">
+        <img src="./src/static/img/votos.png" alt="Casino Montecarlo" />
+        <div class="detail__info">
+          <h2 class="detail__title">Los Votos</h2>
+          <h4>7:30 pm</h4>
+          <h4>Montecarlo Spa,</h4>
+          <h4>Lomas de la primavera</h4>
+          <h4>45065 Zapopan, Jal, Mexico</h4>
+        </div>
+        <a href="#" class="detail__map">Ver Mapa</a>
+      </article>
+      <article class="detail detail__light">
+        <img src="./src/static/img/fiesta.png" alt="Casino Montecarlo" />
+        <div class="detail__info">
+          <h2 class="detail__title">La Fiesta</h2>
+          <h4>8:30 pm</h4>
+          <h4>Montecarlo Spa,</h4>
+          <h4>Lomas de la primavera</h4>
+          <h4>45065 Zapopan, Jal, Mexico</h4>
+        </div>
+        <a href="#" class="detail__map">Ver Mapa</a>
+      </article>
+    </main>
+    <aside class="aside">
+      <div class="aside__content">
+        <div class="aside__header">
+          <img src="./src/static/img/logo_green.png" alt="logos" />
+          <img
+            class="aside__close"
+            src="./src/static/img/close.png"
+            alt="close"
+          />
+        </div>
+        <nav>
+          <ul>
+            <li>Lugar</li>
+            <li>Código de vestimenta</li>
+            <li>Itinerario</li>
+            <li>Mesa de regalos</li>
+            <li>Confirmar asistencia</li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <script>
+      const seg = document.getElementById("cdSeg").firstElementChild;
+
+      setInterval(() => {
+        const actualSeg = parseInt(seg.innerText || 0);
+
+        seg.innerText = `${(actualSeg + 1) % 60}`.padStart(2, "0");
+      }, 1000);
+    </script>
+  </body>
+</html>

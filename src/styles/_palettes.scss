@@ -1,0 +1,37 @@
+$palettes: (
+    green: (
+        base:    hsla(178, 39%, 68%, 1),
+        light:   hsla(178, 39%, 75%, 1),
+        lighter: hsla(178, 39%, 85%, 1)
+    ),
+    gray: (
+        base:   hsla(0, 0%, 18%, 1),
+        light: hsla(0, 0%, 40%, 1),
+        lighter: hsla(0, 0%, 70%, 1)
+    ),
+    white: (
+        base: white
+    )
+);
+
+
+@function color($color,$tone){
+
+    @warn map-get($palettes,$color);
+
+    @if map-has-key($palettes,$color){
+        $color: map-get($palettes,$color);
+
+            @if map-has-key($color,$tone){
+                $tone: map-get($color,$tone);
+                @return $tone;
+            }
+
+            @warn "unknown tone `#{$tone}` in color";
+            @return null;        
+    }
+
+    @warn "unknown color `#{$color}` in palette";
+    @return null;
+   
+}

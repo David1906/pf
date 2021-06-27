@@ -531,14 +531,13 @@ button:hover {
 }
 
 .aside {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  position: relative;
+  position: fixed;
+  top: 0;
   height: 100vh;
   width: 100vw;
 }
@@ -558,10 +557,7 @@ button:hover {
   z-index: -1;
   width: calc(100%);
   background-color: #666666;
-  -webkit-animation: slideNav 0.5s ease 0s 1 alternate;
-          animation: slideNav 0.5s ease 0s 1 alternate;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  will-change: transform;
 }
 
 .aside::after {
@@ -569,10 +565,7 @@ button:hover {
   z-index: -1;
   width: calc(100% - 2rem);
   background-color: #8ecdcb;
-  -webkit-animation: slideNav 0.6s ease 0.1s 1 alternate;
-          animation: slideNav 0.6s ease 0.1s 1 alternate;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  will-change: transform;
 }
 
 .aside__content {
@@ -588,10 +581,55 @@ button:hover {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: white;
-  -webkit-animation: slideNav 0.8s ease 0.3s 1 alternate;
-          animation: slideNav 0.8s ease 0.3s 1 alternate;
+  will-change: transform;
+}
+
+.aside--show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.aside--show .aside__content {
+  -webkit-animation: showNav 0.8s ease 0.3s 1 alternate;
+          animation: showNav 0.8s ease 0.3s 1 alternate;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
+}
+
+.aside--show::before {
+  -webkit-animation: showNav 0.5s ease 0s 1 alternate;
+          animation: showNav 0.5s ease 0s 1 alternate;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.aside--show::after {
+  -webkit-animation: showNav 0.6s ease 0.1s 1 alternate;
+          animation: showNav 0.6s ease 0.1s 1 alternate;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.aside--hide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.aside--hide .aside__content {
+  -webkit-animation: hideNav 0.4s ease 0s 1;
+          animation: hideNav 0.4s ease 0s 1;
+}
+
+.aside--hide::before {
+  -webkit-animation: hideNav 0.8s ease 0s 1;
+          animation: hideNav 0.8s ease 0s 1;
+}
+
+.aside--hide::after {
+  -webkit-animation: hideNav 0.6s ease 0s 1;
+          animation: hideNav 0.6s ease 0s 1;
 }
 
 .aside__header {
@@ -651,7 +689,7 @@ button:hover {
   font-weight: bold;
 }
 
-@-webkit-keyframes slideNav {
+@-webkit-keyframes showNav {
   from {
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
@@ -662,7 +700,7 @@ button:hover {
   }
 }
 
-@keyframes slideNav {
+@keyframes showNav {
   from {
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
@@ -670,6 +708,28 @@ button:hover {
   to {
     -webkit-transform: translateX(0);
             transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes hideNav {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+
+@keyframes hideNav {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
   }
 }
 

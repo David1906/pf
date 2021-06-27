@@ -59,13 +59,25 @@
     </aside>
 
     <script>
-      const seg = document.getElementById("cdSeg").firstElementChild;
+      const aside = document.querySelector(".aside");
 
-      setInterval(() => {
-        const actualSeg = parseInt(seg.innerText || 0);
+      aside.addEventListener("animationend", (e) => {
+        if (e.animationName === "hideNav" && e.pseudoElement === "::before") {
+          aside.classList.remove("aside--hide");
+        }
+      });
 
-        seg.innerText = `${(actualSeg + 1) % 60}`.padStart(2, "0");
-      }, 1000);
+      const btnClose = document.querySelector(".aside__close");
+      btnClose.addEventListener("click", () => {
+        aside.classList.remove("aside--show");
+        aside.classList.add("aside--hide");
+      });
+
+      const btnMenu = document.querySelector(".header__menu");
+      btnMenu.addEventListener("click", () => {
+        aside.classList.add("aside--show");
+        aside.classList.remove("aside--hide");
+      });
     </script>
   </body>
 </html>

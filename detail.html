@@ -9,11 +9,13 @@
   </head>
   <body>
     <header class="header">
-      <img class="header__logo" src="./src/static/img/logo.png" alt="PF" />
+      <a class="header__logo" href="/index.html">
+        <img src="./src/static/img/logo.png" alt="PF"
+      /></a>
       <img class="header__menu" src="./src/static/img/hamburger.png" alt="PF" />
     </header>
     <main>
-      <article class="detail votos">
+      <article class="detail votos" id="lugar">
         <img src="./src/static/img/votos.png" alt="Casino Montecarlo" />
         <div class="detail__info">
           <h2 class="detail__title">Los Votos</h2>
@@ -35,7 +37,115 @@
         </div>
         <a href="#" class="detail__map">Ver Mapa</a>
       </article>
+      <article class="vestimenta" id="vestimenta">
+        <h2>Código de vesimenta:</h2>
+        <img src="/src/static/img/dressing.png" alt="dressing" />
+        <h4>Formal</h4>
+      </article>
+      <article class="itinerario" id="itinerario">
+        <h1>Itinerario</h1>
+        <div class="itinerario_item">
+          <h2>
+            Cocktail<br />
+            de<br />
+            bienvenida <span>7pm a 8pm</span>
+          </h2>
+
+          <div class="itinerario_item_icon">
+            <img src="/src/static/icons/la_glass-cheers.png" alt="" />
+          </div>
+        </div>
+        <div class="itinerario_item">
+          <h2>Recepción <span>7pm a 8pm</span></h2>
+
+          <div class="itinerario_item_icon">
+            <img src="/src/static/icons/rings.png" alt="" />
+          </div>
+        </div>
+        <div class="itinerario_item">
+          <h2>Cena<span>7pm a 8pm</span></h2>
+
+          <div class="itinerario_item_icon">
+            <img src="/src/static/icons/cil_dinner.png" alt="" />
+          </div>
+        </div>
+        <div class="itinerario_item">
+          <h2>Fiesta <span>7pm a 8pm</span></h2>
+
+          <div class="itinerario_item_icon">
+            <img src="/src/static/icons/vs_party.png" alt="" />
+          </div>
+        </div>
+      </article>
+
+      <article class="mesa" id="mesa">
+        <h1>Mesa de regalos</h1>
+        <a href="http://">
+          <img src="/src/static/img/logo_liverpool.png" alt="logo liverpool" />
+          <h2>410862031</h2>
+        </a>
+      </article>
+
+      <article class="gallery" id="gallery">
+        <h1>Galería</h1>
+
+        <div class="gallery_items spotlight-group">
+          <a
+            class="spotlight"
+            href="/src/static/img/galeria/Galeria1.jpg"
+            data-description="This is a description"
+          >
+            <img src="/src/static/img/galeria/Galeria1.jpg" />
+          </a>
+          <a class="spotlight" href="/src/static/img/galeria/Galeria2.jpg">
+            <img src="/src/static/img/galeria/Galeria2.jpg" />
+          </a>
+          <a class="spotlight" href="/src/static/img/galeria/Galeria3.jpg">
+            <img src="/src/static/img/galeria/Galeria3.jpg" />
+          </a>
+          <a class="spotlight" href="/src/static/img/galeria/Galeria4.jpg">
+            <img src="/src/static/img/galeria/Galeria4.jpg" />
+          </a>
+          <a class="spotlight" href="/src/static/img/galeria/Galeria5.jpg">
+            <img src="/src/static/img/galeria/Galeria5.jpg" />
+          </a>
+          <a class="spotlight" href="/src/static/img/galeria/Galeria6.jpg">
+            <img src="/src/static/img/galeria/Galeria6.jpg" />
+          </a>
+          <a class="spotlight" href="/src/static/img/galeria/Galeria7.jpg">
+            <img src="/src/static/img/galeria/Galeria7.jpg" />
+          </a>
+          <a class="spotlight" href="/src/static/img/galeria/Galeria8.jpg">
+            <img src="/src/static/img/galeria/Galeria8.jpg" />
+          </a>
+        </div>
+      </article>
+
+      <article class="seeya">
+        <h1>Nos<br />Vemos<br />Pronto</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh purus
+          maecenas lectus lorem varius vitae sagittis, malesuada quis. Odio sed
+          diam aliquam quisque a. Gravida pharetra, fusce aliquam id commodo at
+          congue. Dolor habitant arcu facilisis id. Nam sed orci neque risus
+          facilisis vel. Id nisi ipsum euismod sed aliquam. Varius fermentum
+          enim massa tristique mattis lorem tincidunt facilisi diam. At sagittis
+          sit augue cras ornare iaculis elit cursus. Amet blandit pharetra
+          consectetur fringilla fermentum ut. Fringilla vestibulum maecenas
+          accumsan pellentesque justo eros. Pellentesque eget integer ut amet,
+          semper lorem lectus mauris. Faucibus sem sed dolor malesuada diam.
+          Nunc, mattis praesent fusce sed nunc curabitur eu, massa. Amet, id
+          malesuada cursus accumsan purus viverra.
+        </p>
+
+        <button onclick="location.href='/detail.html'">
+          Confirmar Asistencia
+        </button>
+      </article>
     </main>
+
+    <footer>Pamela & Fernando 2021</footer>
+
     <aside class="aside">
       <div class="aside__content">
         <div class="aside__header">
@@ -48,18 +158,45 @@
         </div>
         <nav>
           <ul>
-            <li>Lugar</li>
-            <li>Código de vestimenta</li>
-            <li>Itinerario</li>
-            <li>Mesa de regalos</li>
-            <li>Confirmar asistencia</li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#lugar">Lugar</a>
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#vestimenta"
+                >Código de vestimenta</a
+              >
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#itinerario"
+                >Itinerario</a
+              >
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#mesa"
+                >Mesa de regalos</a
+              >
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#gallery">Galería</a>
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#mesa"
+                >Confirmar asistencia</a
+              >
+            </li>
           </ul>
         </nav>
       </div>
     </aside>
 
-    <script>
+    <script src="/lib/spotlight.bundle.js"></script>
+    <script defer>
       const aside = document.querySelector(".aside");
+
+      function closeAside() {
+        aside.classList.remove("aside--show");
+        aside.classList.add("aside--hide");
+      }
 
       aside.addEventListener("animationend", (e) => {
         if (e.animationName === "hideNav" && e.pseudoElement === "::before") {
@@ -68,15 +205,17 @@
       });
 
       const btnClose = document.querySelector(".aside__close");
-      btnClose.addEventListener("click", () => {
-        aside.classList.remove("aside--show");
-        aside.classList.add("aside--hide");
-      });
+      btnClose.addEventListener("click", closeAside);
 
       const btnMenu = document.querySelector(".header__menu");
       btnMenu.addEventListener("click", () => {
         aside.classList.add("aside--show");
         aside.classList.remove("aside--hide");
+      });
+
+      lightGallery(document.getElementById(".gallery_items"), {
+        plugins: [lgZoom],
+        speed: 500,
       });
     </script>
   </body>

@@ -1,84 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Boda Pamela Y Fernando</title>
-        <link rel="stylesheet" href="./src/styles/main.css" />
-    </head>
-    <body>
-        <header class="header">
-            <img class="header__logo" src="./src/static/img/logo.png" alt="PF" />
-            <img class="header__menu" src="./src/static/img/hamburger.png" alt="PF" />
-        </header>
-        <main>
-            <article class="hero">
-                <div class="hero__names">
-                    Pamela & Fernando
-                    <span>18 Septiembre 2021</span>
-                </div>
-                <div class="countdown">
-                    <div class="countdown__digit">
-                        <span>20</span>
-                        <div class="countdown__text">Dias</div>
-                    </div>
-                    <span>:</span>
-                    <div class="countdown__digit">
-                        <span>17</span>
-                        <div class="countdown__text">Horas</div>
-                    </div>
-                    <span>:</span>
-                    <div class="countdown__digit">
-                        <span>30</span>
-                        <div class="countdown__text">Minutos</div>
-                    </div>
-                    <span>:</span>
-                    <div id="cdSeg" class="countdown__digit">
-                        <span>00</span>
-                        <div class="countdown__text">Segundos</div>
-                    </div>
-                </div>
-            </article>
-            <article class="article">
-                <h2 class="article__title">¡Nos Casamos!</h2>
-                <img src="./src/static/img/spouses/1.png" alt="Novios corazón" />
-                <button class="play"></button>
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta et sequi nihil distinctio
-                    consequatur nesciunt neque vel eos ut eius ipsum amet similique consequuntur labore, voluptatibus
-                    repellendus officiis dicta ea tempore, fugit suscipit vitae praesentium. Ducimus quia sapiente dolor
-                    et praesentium, facere provident, voluptates, tenetur quis hic ad nostrum animi!
-                </p>
-                <button onclick="location.href='/detail.html'">Ver detalles del evento</button>
-            </article>
-        </main>
-        <aside class="aside">
-            <div class="aside__content">
-                <div class="aside__header">
-                    <img src="./src/static/img/logo_green.png" alt="logos" />
-                    <img class="aside__close" src="./src/static/img/close.png" alt="close" />
-                </div>
-                <nav>
-                    <ul>
-                        <li>Lugar</li>
-                        <li>Código de vestimenta</li>
-                        <li>Itinerario</li>
-                        <li>Mesa de regalos</li>
-                        <li>Confirmar asistencia</li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boda Pamela Y Fernando</title>
+    <link rel="stylesheet" href="./src/styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <a class="header__logo" href="/index.html">
+        <img src="./src/static/img/logo.png" alt="PF"
+      /></a>
+      <img class="header__menu" src="./src/static/img/hamburger.png" alt="PF" />
+    </header>
+    <main>
+      <article class="hero">
+        <div class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="splide__slide">
+                <img src="/src/static/img/portada/Portada1.jpg" alt="" />
+              </li>
+              <li class="splide__slide">
+                <img src="/src/static/img/portada/Portada2.jpg" alt="" />
+              </li>
+              <li class="splide__slide">
+                <img src="/src/static/img/portada/Portada3.jpg" alt="" />
+              </li>
+              <li class="splide__slide">
+                <img src="/src/static/img/portada/Portada4.jpeg" alt="" />
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="hero__names">
+          Pamela & Fernando
+          <span>18 Septiembre 2021</span>
+        </div>
+        <div class="countdown">
+          <div id="cdDays" class="countdown__digit">
+            <span>00</span>
+            <div class="countdown__text">Dias</div>
+          </div>
+          <span>:</span>
+          <div id="cdHours" class="countdown__digit">
+            <span>00</span>
+            <div class="countdown__text">Horas</div>
+          </div>
+          <span>:</span>
+          <div id="cdMinutes" class="countdown__digit">
+            <span>00</span>
+            <div class="countdown__text">Minutos</div>
+          </div>
+          <span>:</span>
+          <div id="cdSeconds" class="countdown__digit">
+            <span>00</span>
+            <div class="countdown__text">Segundos</div>
+          </div>
+        </div>
+      </article>
+      <article class="article">
+        <h2 class="article__title">¡Nos Casamos!</h2>
+        <img
+          src="./src/static/img/spouses/Fotovideo2.jpg"
+          alt="Novios corazón"
+        />
+        <button class="play"></button>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta et
+          sequi nihil distinctio consequatur nesciunt neque vel eos ut eius
+          ipsum amet similique consequuntur labore, voluptatibus repellendus
+          officiis dicta ea tempore, fugit suscipit vitae praesentium. Ducimus
+          quia sapiente dolor et praesentium, facere provident, voluptates,
+          tenetur quis hic ad nostrum animi!
+        </p>
+        <button onclick="location.href='/detail.html'">
+          Ver detalles del evento
+        </button>
+      </article>
+    </main>
+    <aside class="aside">
+      <div class="aside__content">
+        <div class="aside__header">
+          <img src="./src/static/img/logo_green.png" alt="logos" />
+          <img
+            class="aside__close"
+            src="./src/static/img/close.png"
+            alt="close"
+          />
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a onclick="closeAside()" href="./detail.html">Lugar</a>
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#vestimenta"
+                >Código de vestimenta</a
+              >
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#itinerario"
+                >Itinerario</a
+              >
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#mesa"
+                >Mesa de regalos</a
+              >
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#gallery">Galería</a>
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#mesa"
+                >Confirmar asistencia</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
 
-        <script>
-            const seg = document.getElementById('cdSeg').firstElementChild;
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script>
+      const $days = document.getElementById("cdDays").firstElementChild;
+      const $hours = document.getElementById("cdHours").firstElementChild;
+      const $minutes = document.getElementById("cdMinutes").firstElementChild;
+      const $seconds = document.getElementById("cdSeconds").firstElementChild;
 
-            setInterval(() => {
-                const actualSeg = parseInt(seg.innerText || 0);
+      // Set the date we're counting down to
+      var countDownDate = new Date("Sep 18, 2021 16:00:00").getTime();
 
-                seg.innerText = `${(actualSeg + 1) % 60}`.padStart(2, '0');
-            }, 1000);
-        </script>
-    </body>
+      // Countdown function.
+      function countdown() {
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        if (distance < 0) {
+          clearInterval(x);
+          days = 0;
+          hours = 0;
+          minutes = 0;
+          seconds = 0;
+        }
+
+        // Display the result in the element with id="demo"
+        $days.innerText = `${days}`.padStart(2, "0");
+        $hours.innerText = `${hours}`.padStart(2, "0");
+        $minutes.innerText = `${minutes}`.padStart(2, "0");
+        $seconds.innerText = `${seconds}`.padStart(2, "0");
+      }
+
+      // Update the count down every 1 second
+      var x = setInterval(countdown, 1000);
+
+      // Aside
+
+      const aside = document.querySelector(".aside");
+
+      function closeAside() {
+        aside.classList.remove("aside--show");
+        aside.classList.add("aside--hide");
+      }
+
+      aside.addEventListener("animationend", (e) => {
+        if (e.animationName === "hideNav" && e.pseudoElement === "::before") {
+          aside.classList.remove("aside--hide");
+        }
+      });
+
+      const btnClose = document.querySelector(".aside__close");
+      btnClose.addEventListener("click", closeAside);
+
+      const btnMenu = document.querySelector(".header__menu");
+      btnMenu.addEventListener("click", () => {
+        aside.classList.add("aside--show");
+        aside.classList.remove("aside--hide");
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        new Splide(".splide", {
+          type: "fade",
+          arrows: false,
+          autoplay: true,
+          rewind: true,
+          interval: 10000,
+          speed: 1000,
+          drag: true,
+          pagination: false,
+        }).mount();
+      });
+      //
+    </script>
+  </body>
 </html>

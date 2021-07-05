@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boda Pamela Y Fernando</title>
+    <link rel="stylesheet" href="./src/styles/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <a class="header__logo" href="/index.html">
+        <img src="./src/static/img/logo.png" alt="PF"
+      /></a>
+      <img class="header__menu" src="./src/static/img/hamburger.png" alt="PF" />
+    </header>
+    <main>
+      <article id="enter_code" class="schedule" style="display: none">
+        <form action="">
+          <h3>Ingrese su código de invitado</h3>
+          <input
+            type="text"
+            name="code"
+            id="code"
+            required
+            min="4"
+            max="6"
+            style="text-align: center"
+            onkeyup="this.value = this.value.toUpperCase();"
+          />
+          <h6 class="error" style="opacity: 0">*Código inválido</h6>
+          <span class="loader hide"></span>
+          <button>Ingresar</button>
+        </form>
+      </article>
+
+      <article id="confirm_code" class="schedule" style="display: none">
+        <form>
+          <h3>Familia Rodrígez Jaras</h3>
+          <h5>
+            Por favor confirma la cantidad de adultos y niños que asistirán:
+          </h5>
+          <label for="adults">Adultos:</label>
+          <select name="adults" id="adults"></select>
+          <label for="children">Niños:</label>
+          <select name="children" id="children"></select>
+          <span class="loader hide"></span>
+          <button>Confirmar</button>
+        </form>
+      </article>
+
+      <article id="confirmated_code" class="schedule" style="display: none">
+        <form action="">
+          <h3>Familia Rodrígez Jaras</h3>
+          <h5>
+            Gracias por confirmar, reservarémos tus lugares para 2 niños y 2
+            adultos.
+          </h5>
+
+          <button>Regresar</button>
+        </form>
+      </article>
+    </main>
+    <aside class="aside">
+      <div class="aside__content">
+        <div class="aside__header">
+          <img src="./src/static/img/logo_green.png" alt="logos" />
+          <img
+            class="aside__close"
+            src="./src/static/img/close.png"
+            alt="close"
+          />
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a onclick="closeAside()" href="./detail.html">Lugar</a>
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#vestimenta"
+                >Código de vestimenta</a
+              >
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#itinerario"
+                >Itinerario</a
+              >
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#mesa"
+                >Mesa de regalos</a
+              >
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./detail.html#gallery">Galería</a>
+            </li>
+            <li>
+              <a onclick="closeAside()" href="./schedule.html"
+                >Confirmar asistencia</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <script>
+      // Aside
+
+      const aside = document.querySelector(".aside");
+
+      function closeAside() {
+        aside.classList.remove("aside--show");
+        aside.classList.add("aside--hide");
+      }
+
+      aside.addEventListener("animationend", (e) => {
+        if (e.animationName === "hideNav" && e.pseudoElement === "::before") {
+          aside.classList.remove("aside--hide");
+        }
+      });
+
+      const btnClose = document.querySelector(".aside__close");
+      btnClose.addEventListener("click", closeAside);
+
+      const btnMenu = document.querySelector(".header__menu");
+      btnMenu.addEventListener("click", () => {
+        aside.classList.add("aside--show");
+        aside.classList.remove("aside--hide");
+      });
+
+      // Manage schedule screens.
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const code = urlParams.get("code");
+      const adults = urlParams.get("adults");
+      const $enterCode = document.querySelector("#enter_code");
+      const $confirmCode = document.querySelector("#confirm_code");
+      const $confirmatedCode = document.querySelector("#confirmated_code");
+      const $loader = document.querySelector(".loader");
+      let gestId = null;
+
+      if (code) {
+        getCode(code);
+      } else if (adults) {
+        $confirmatedCode.style.display = null;
+      } else {
+        $enterCode.style.display = null;
+      }
+
+      // Funcion obtener data de código.
+      function getCode(code) {
+        // Mostrar loder.
+        $loader.classList.toggle("hide", false);
+
+        axios
+          .get(
+            `https://boda-pf.ue.r.appspot.com/lista-de-invitados?Codigo=${code}`
+            // `http://localhost:1337/lista-de-invitados?Codigo=${code}`
+          )
+          .then(function (response) {
+            // handle success
+            if (response.data.length) {
+              const {
+                id,
+                Prefijo,
+                Apellido,
+                Codigo,
+                Nombre,
+                Confirmado,
+                Numero_adultos,
+                Numero_ninos,
+                Numero_adultos_confirmado,
+                Numero_ninos_confirmado,
+              } = response.data[0];
+
+              // Guardar id.
+              gestId = id;
+
+              // Mostrar nombre.
+              $confirmCode.querySelector("h3").innerText = `${Prefijo || ""} ${
+                Nombre || ""
+              } ${Apellido || ""}`;
+              // Llenar select
+              const $cmbAdults = document.getElementById("adults");
+              $cmbAdults.innerHTML = "";
+              for (let i = 0; i <= Numero_adultos; i++) {
+                const opt = document.createElement("option");
+                opt.value = i;
+                opt.innerText = i;
+
+                $cmbAdults.appendChild(opt);
+              }
+              $cmbAdults.value =
+                Numero_adultos_confirmado != undefined
+                  ? Numero_adultos_confirmado
+                  : Numero_adultos;
+
+              const $cmbChildren = document.getElementById("children");
+              $cmbChildren.innerHTML = "";
+              for (let i = 0; i <= Numero_ninos; i++) {
+                const opt = document.createElement("option");
+                opt.value = i;
+                opt.innerText = i;
+
+                $cmbChildren.appendChild(opt);
+              }
+              $cmbChildren.value =
+                Numero_ninos_confirmado != undefined
+                  ? Numero_ninos_confirmado
+                  : Numero_ninos;
+
+              // Ocultar loader.
+              $loader.classList.toggle("hide", true);
+
+              $enterCode.style.display = "none";
+              $confirmCode.style.display = null;
+            } else {
+              // Ocultar loader.
+              $loader.classList.toggle("hide", true);
+
+              $enterCode.style.display = null;
+              $enterCode.querySelector(".error").style.opacity = 1;
+              $enterCode.querySelector("#code").value = code;
+            }
+          });
+      }
+
+      $enterCode.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        getCode(formData.get("code"));
+      });
+
+      // Publicar cambios en confirmacion.
+      $confirmCode.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+
+        // Mostrar loader.
+        $confirmCode.querySelector(".loader").classList.toggle("hide", false);
+
+        axios
+          .put(
+            `https://boda-pf.ue.r.appspot.com/lista-de-invitados/${gestId}`,
+            //`http://localhost:1337/lista-de-invitados/${gestId}`,
+            {
+              Numero_adultos_confirmado: formData.get("adults") || 0,
+              Numero_ninos_confirmado: formData.get("children") || 0,
+              Confirmado: true,
+            }
+          )
+          .then((response) => {
+            const {
+              id,
+              Prefijo,
+              Apellido,
+              Codigo,
+              Nombre,
+              Confirmado,
+              Numero_adultos,
+              Numero_ninos,
+              Numero_adultos_confirmado,
+              Numero_ninos_confirmado,
+            } = response.data;
+
+            // Setear valores.
+            $confirmatedCode.querySelector("h3").innerText = `${
+              Prefijo || ""
+            } ${Nombre || ""} ${Apellido || ""}`;
+
+            $confirmatedCode.querySelector(
+              "h5"
+            ).innerText = `Gracias por confirmar, reservarémos tus lugares para ${Numero_adultos_confirmado} ${
+              Numero_adultos_confirmado == 1 ? "adulto" : "adultos"
+            } y ${Numero_ninos_confirmado} ${
+              Numero_ninos_confirmado == 1 ? "niño" : "niños"
+            }.`;
+
+            // Ocultar loader.
+            $confirmCode
+              .querySelector(".loader")
+              .classList.toggle("hide", true);
+
+            $confirmCode.style.display = "none";
+            $confirmatedCode.style.display = null;
+          });
+      });
+    </script>
+  </body>
+</html>

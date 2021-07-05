@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -24,17 +24,29 @@
           <div class="splide__track">
             <ul class="splide__list">
               <li class="splide__slide">
-                <img src="/src/static/img/portada/Portada1.jpg" alt="" />
+                <img
+                  src="https://ik.imagekit.io/cn7lhzxdahe/Pf/min_portada1_D1K_1iJWDs.jpg"
+                  alt=""
+                />
               </li>
               <li class="splide__slide">
-                <img src="/src/static/img/portada/Portada2.jpg" alt="" />
+                <img
+                  src="https://ik.imagekit.io/cn7lhzxdahe/Pf/min_Portada2_-fgTTFKI78.jpg"
+                  alt=""
+                />
               </li>
               <li class="splide__slide">
-                <img src="/src/static/img/portada/Portada3.jpg" alt="" />
+                <img
+                  src="https://ik.imagekit.io/cn7lhzxdahe/Pf/min_Portada3_f5uaIRp9oDq.jpg"
+                  alt=""
+                />
               </li>
-              <li class="splide__slide">
-                <img src="/src/static/img/portada/Portada4.jpeg" alt="" />
-              </li>
+              <!-- <li class="splide__slide">
+                <img
+                  src="https://ik.imagekit.io/cn7lhzxdahe/Pf/min_Portada4_q9hwWin4t.jpg"
+                  alt=""
+                />
+              </li> -->
             </ul>
           </div>
         </div>
@@ -42,7 +54,7 @@
           Pamela & Fernando
           <span>18 Septiembre 2021</span>
         </div>
-        <div class="countdown">
+        <div class="countdown container">
           <div id="cdDays" class="countdown__digit">
             <span>00</span>
             <div class="countdown__text">Dias</div>
@@ -64,26 +76,42 @@
           </div>
         </div>
       </article>
-      <article class="article">
+      <article class="article container">
         <h2 class="article__title">¡Nos Casamos!</h2>
         <img
           src="./src/static/img/spouses/Fotovideo2.jpg"
           alt="Novios corazón"
         />
-        <button class="play"></button>
+        <button class="button button__play"></button>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta et
-          sequi nihil distinctio consequatur nesciunt neque vel eos ut eius
-          ipsum amet similique consequuntur labore, voluptatibus repellendus
-          officiis dicta ea tempore, fugit suscipit vitae praesentium. Ducimus
-          quia sapiente dolor et praesentium, facere provident, voluptates,
-          tenetur quis hic ad nostrum animi!
+          Cada día, hasta llegar a este momento en el cual decidimos unir
+          nuestras vidas en matrimonio para siempre. Así comenzamos una nueva
+          etapa, llenos de alegría. Seguramente habrá momentos de caos y
+          tristeza, pero será este mismo amor el que nos hará fuertes y nos
+          permitirá afrontar todos los desafíos que se presenten en el camino.
+          Por ahora nuestra vida se encuentra completa y estamos listos para
+          compartirla juntos…
+          <br />
+          <blockquote>
+            Cuando te das cuenta que quieres pasar el resto de la vida con
+            alguien, deseas que el resto de la vida inicie lo antes posible
+          </blockquote>
         </p>
         <button onclick="location.href='/detail.html'">
           Ver detalles del evento
         </button>
       </article>
     </main>
+    <div id="video" class="video" style="display: none">
+      <iframe
+        title="vimeo-player"
+        src="https://player.vimeo.com/video/570706511"
+        frameborder="0"
+        autoplay="1"
+        allowfullscreen
+      ></iframe>
+      <button class="button button__close"></button>
+    </div>
     <aside class="aside">
       <div class="aside__content">
         <div class="aside__header">
@@ -118,7 +146,7 @@
               <a onclick="closeAside()" href="./detail.html#gallery">Galería</a>
             </li>
             <li>
-              <a onclick="closeAside()" href="./detail.html#mesa"
+              <a onclick="closeAside()" href="./schedule.html"
                 >Confirmar asistencia</a
               >
             </li>
@@ -135,7 +163,7 @@
       const $seconds = document.getElementById("cdSeconds").firstElementChild;
 
       // Set the date we're counting down to
-      var countDownDate = new Date("Sep 18, 2021 16:00:00").getTime();
+      var countDownDate = new Date("Sep 18, 2021 19:00:00").getTime();
 
       // Countdown function.
       function countdown() {
@@ -208,6 +236,22 @@
         }).mount();
       });
       //
+
+      const $video = document.getElementById("video");
+      const $iframe = $video.firstElementChild.contentWindow;
+      const $btnPlay = document.querySelector("button.button__play");
+
+      // Cerrar modal de video.
+      $video.addEventListener("click", () => {
+        $video.style.display = "none";
+        $iframe.postMessage('{"method":"pause"}', "*");
+      });
+
+      // Abrir modal de video.
+      $btnPlay.addEventListener("click", () => {
+        $video.style.display = null;
+        $iframe.postMessage('{"method":"play"}', "*");
+      });
     </script>
   </body>
 </html>

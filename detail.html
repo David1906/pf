@@ -5,6 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Boda Pamela Y Fernando</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./src/static/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./src/static/icons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./src/static/icons/favicon-16x16.png"
+    />
     <link rel="stylesheet" href="./src/styles/main.css" />
   </head>
   <body>
@@ -23,7 +41,7 @@
           <h4>Hacienda La Aurora,</h4>
           <h4>Pueblo de San Sebastián #220,</h4>
           <h4>45602 Tlaquepaque, Jal, Mexico</h4>
-          <a href="#" class="detail__map">Ver Mapa</a>
+          <span class="detail__map">Ver Mapa</span>
         </div>
       </article>
       <article class="detail detail__light">
@@ -34,7 +52,7 @@
           <h4>Hacienda La Aurora,</h4>
           <h4>Pueblo de San Sebastián #220,</h4>
           <h4>45602 Tlaquepaque, Jal, Mexico</h4>
-          <a href="#" class="detail__map">Ver Mapa</a>
+          <span class="detail__map">Ver Mapa</span>
         </div>
       </article>
       <article class="vestimenta" id="vestimenta">
@@ -58,7 +76,7 @@
 
         <div class="itinerario_item">
           <h2>
-            Cocktelería
+            Coctelería
             <span>20:00</span>
             <span>Brindemos por el amor</span>
           </h2>
@@ -72,7 +90,10 @@
           <h2>
             Banquete
             <span>21:30</span>
-            <span>Nuestra primera cena como la familia Aldana</span>
+            <span
+              >Nuestra primera cena como la familia
+              <b style="color: #686666">Aldana Sandoval</b></span
+            >
           </h2>
 
           <div class="itinerario_item_icon">
@@ -251,6 +272,20 @@
       </div>
     </aside>
 
+    <!-- Mapas -->
+    <div id="Map" class="video" style="display: none">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14942.645547392409!2d-103.416114!3d20.561031!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x10b513e7d7a9fe3d!2sHacienda%20La%20Aurora!5e0!3m2!1ses-419!2smx!4v1626040633732!5m2!1ses-419!2smx"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        scrollwheel=""
+      ></iframe>
+      <button class="button button__close"></button>
+    </div>
+
     <script src="/lib/spotlight.bundle.js"></script>
     <script defer>
       const aside = document.querySelector(".aside");
@@ -275,9 +310,22 @@
         aside.classList.remove("aside--hide");
       });
 
-      lightGallery(document.getElementById(".gallery_items"), {
-        plugins: [lgZoom],
-        speed: 500,
+      // Mapa.
+      const $modal = document.getElementById("Map");
+      const $btnMap = document.querySelectorAll(".detail__map");
+
+      // Cerrar modal.
+      $modal.addEventListener("click", () => {
+        $modal.style.display = "none";
+      });
+
+      // Abrir modal.
+
+      $btnMap.forEach((el) => {
+        el.addEventListener("click", () => {
+          $modal.style.display = null;
+          console.log("click map");
+        });
       });
     </script>
   </body>

@@ -1,12 +1,16 @@
 @import "normalize";
 @import "palettes";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Rosario&display=swap");
+@font-face {
+  font-family: edwardian-script-itc;
+  src: url(../static/fonts/Edwardian/edwardian-script-itc-webfont.woff);
+}
 
 body {
   position: relative;
   font-family: "Roboto", sans-serif;
   width: 100%;
-  max-width: 2000px;
+  // max-width: 2000px;
   margin: 0 auto;
   box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.17);
   overflow-x: hidden;
@@ -34,10 +38,11 @@ article {
 }
 
 .header {
-  position: fixed;
+  position: sticky;
   z-index: 10;
   display: flex;
   place-items: center;
+  top: 0;
 
   height: 3rem;
   width: 100%;
@@ -82,7 +87,7 @@ article {
     bottom: 0;
     left: 0;
     right: 0;
-    margin-top: 3rem;
+    margin-top: 0rem;
 
     z-index: -1;
 
@@ -115,15 +120,23 @@ article {
     margin-bottom: 2rem;
 
     color: white;
-    font-family: "Rosario", sans-serif;
+    // font-family: "Rosario", sans-serif;
+    font-family: "edwardian-script-itc", sans-serif;
     text-align: center;
-    text-shadow: 0 4px 4px hsla(0, 0, 0, 0.2);
+    text-shadow: 0 1px 5px hsla(0, 0, 0, 0.7);
 
     & span {
       display: block;
       margin: 0.5em auto;
+      font-family: "Rosario", sans-serif;
 
       font-size: 1rem;
+    }
+    @media (min-width: 768px) {
+      font-size: 4.5rem;
+      & span {
+        font-size: 1.5rem;
+      }
     }
   }
 }
@@ -198,6 +211,8 @@ article {
     padding: 2rem;
     border-radius: 10px;
     // background-color: color(green, base);
+    font-family: "edwardian-script-itc", sans-serif;
+    font-size: 1.5rem;
 
     &::before {
       content: open-quote;
@@ -213,6 +228,10 @@ article {
       color: color(green, base);
       font-size: 2rem;
       line-height: 0.8;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
     }
   }
 }
@@ -283,7 +302,7 @@ button {
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 1;
+  z-index: 1000;
 
   & > *,
   &::before,
@@ -522,6 +541,7 @@ button {
 
     &:hover {
       opacity: 0.8;
+      cursor: pointer;
     }
   }
 
@@ -553,6 +573,7 @@ button {
     justify-content: center;
 
     & img {
+      margin-top: 0;
       max-width: 60rem;
       border-radius: 10px;
     }
@@ -575,6 +596,10 @@ button {
   img,
   h4 {
     margin: 0.5rem 0;
+  }
+
+  img {
+    width: 10rem;
   }
 
   &::before,

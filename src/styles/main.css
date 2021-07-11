@@ -342,11 +342,15 @@ template {
   display: none;
 }
 
+@font-face {
+  font-family: edwardian-script-itc;
+  src: url(../static/fonts/Edwardian/edwardian-script-itc-webfont.woff);
+}
+
 body {
   position: relative;
   font-family: "Roboto", sans-serif;
   width: 100%;
-  max-width: 2000px;
   margin: 0 auto;
   -webkit-box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.17);
           box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.17);
@@ -374,12 +378,14 @@ article::before {
 }
 
 .header {
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
   z-index: 10;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   place-items: center;
+  top: 0;
   height: 3rem;
   width: 100%;
   -webkit-box-sizing: border-box;
@@ -428,7 +434,7 @@ article::before {
   bottom: 0;
   left: 0;
   right: 0;
-  margin-top: 3rem;
+  margin-top: 0rem;
   z-index: -1;
 }
 
@@ -457,15 +463,25 @@ article::before {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   color: white;
-  font-family: "Rosario", sans-serif;
+  font-family: "edwardian-script-itc", sans-serif;
   text-align: center;
-  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 .hero__names span {
   display: block;
   margin: 0.5em auto;
+  font-family: "Rosario", sans-serif;
   font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .hero__names {
+    font-size: 4.5rem;
+  }
+  .hero__names span {
+    font-size: 1.5rem;
+  }
 }
 
 .countdown {
@@ -558,6 +574,8 @@ article::before {
   background-color: #6a763d2e;
   padding: 2rem;
   border-radius: 10px;
+  font-family: "edwardian-script-itc", sans-serif;
+  font-size: 1.5rem;
 }
 
 .article blockquote::before {
@@ -574,6 +592,12 @@ article::before {
   color: #6a763d;
   font-size: 2rem;
   line-height: 0.8;
+}
+
+@media (min-width: 768px) {
+  .article blockquote {
+    font-size: 2.5rem;
+  }
 }
 
 .button {
@@ -644,7 +668,7 @@ button:hover {
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .aside > *, .aside::before, .aside::after {
@@ -940,6 +964,7 @@ button:hover {
 
 .detail__map:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 
 .detail__light {
@@ -976,6 +1001,7 @@ button:hover {
             justify-content: center;
   }
   .detail img {
+    margin-top: 0;
     max-width: 60rem;
     border-radius: 10px;
   }
@@ -997,6 +1023,10 @@ button:hover {
 .vestimenta img,
 .vestimenta h4 {
   margin: 0.5rem 0;
+}
+
+.vestimenta img {
+  width: 10rem;
 }
 
 .vestimenta::before, .vestimenta::after {
